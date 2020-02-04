@@ -17,10 +17,12 @@ This document:
 - Environment is set up according to [CLFS-E handbook][2] with an additional variable:
   - ```CLFS_TARGET_FS="${CLFS}/targetfs"```
 - `${CLFS_TARGET_FS}` has been populated by the [mkhier.sh script](mkhier.sh)
+- [Basic system software][4] is installed in `${CLFS_TARGET_FS}`
 
 [1]: http://clfs.org/view/clfs-embedded/arm/
 [2]: http://clfs.org/view/clfs-embedded/arm/cross-tools/variables.html
 [3]: https://wiki.alpinelinux.org/wiki/Connecting_to_a_wireless_access_point
+[4]: http://clfs.org/view/clfs-embedded/arm/final-system/introduction.html
 
 ## Table of contents
 -   [Compiling and installing](#compiling-and-installing)  
