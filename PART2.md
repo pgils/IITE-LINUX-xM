@@ -80,6 +80,11 @@ Device Drivers  --->
         [*]     cfg80211 wireless extensions compatibility
         <*> Generic IEEE 802.11 Networking Stack (mac80211)
 ```
+##### RFkill (wpa_supplicant)
+```
+[*] Networking support  --->
+    <*>   RF switch subsystem support  --->
+```
 ##### Disable GPU/DRM and Sound
 *Compiling `OMAP2_DSS` statically into the kernel results in kernel panic on reboot.*  
 ```

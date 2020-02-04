@@ -31,3 +31,4 @@ chmod -v 664 ${TARGETFS}/var/log/lastlog
 # iana-etc: Fetching raw data from IANA with gawk results in a 403 HTTP error.
 # so `/etc/{protocols,services}` from Debian buster are included.
 cp -av ./etc ${TARGETFS}/
+cp -av ./bin ${TARGETFS}/
