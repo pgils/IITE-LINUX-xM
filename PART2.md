@@ -2,13 +2,12 @@
 ## On a BeagleBoard-xM (rev. C)
 
 TODO:
-- DHCP
-- wireguard-tools
 - webserver
 
 This document:
 - Install the needed software to connect the BeagleBoard to a wifi network.
   - *ASUS USB-N10 NANO Wireless-n adapter (RTL8192CU) is used*
+- Install Wireguard tools.
 
 ### [Connecting to a wireless access points (wiki.alpinelinux.org)][3]
 
@@ -167,6 +166,16 @@ make BINDIR=/sbin LIBDIR=/lib install
 
 ### wireless-tools
 [clfs.org][13]
+
+### Wireguard-tools
+source: https://git.zx2c4.com/wireguard-tools  
+branch: master
+
+```
+make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- -C src -j$(nproc)
+install -v -m 0755 src/wg ${CLFS_TARGET_FS}/usr/bin/wg
+```
+*Only the `wg` binary is installed. `make install` installs bash completion, man pages etc.*
 
 
 ## Packaging
