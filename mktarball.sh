@@ -21,7 +21,7 @@ seconds=$(date -d "1970-01-01 UTC $(date +%T)" +%s)
 tarball="$(pwd)/${prefix}-${today}-${seconds}.tar.xz"
 
 targettmp=$(mktemp -d)
-cp -arv "${targetfs}" "${targettmp}"
+cp -arv "${targetfs}"/* "${targettmp}"
 
 # http://clfs.org/view/clfs-embedded/arm/cleanup/chowning.html
 chown -Rv root:root "${targettmp}"
