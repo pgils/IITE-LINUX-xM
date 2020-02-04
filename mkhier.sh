@@ -33,4 +33,4 @@ chmod -v 664 ${TARGETFS}/var/log/lastlog
 cp -av ./etc ${TARGETFS}/
 cp -av ./bin ${TARGETFS}/
 [ -d ./secret ] && \
-    cp -av ./secret ${TARGETFS}/
+    cp -av ./secret/* ${TARGETFS}/
