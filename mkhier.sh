@@ -32,3 +32,5 @@ chmod -v 664 ${TARGETFS}/var/log/lastlog
 # so `/etc/{protocols,services}` from Debian buster are included.
 cp -av ./etc ${TARGETFS}/
 cp -av ./bin ${TARGETFS}/
+[ -d ./secret ] && \
+    cp -av ./secret ${TARGETFS}/
