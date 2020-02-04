@@ -42,6 +42,10 @@ source: git://git.kernel.org/pub/scm/linux/kernel/git/torvalds linux.git
 branch: master  
 defconfig: omap2plus_defconfig  
 
+```
+make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- omap2plus_defconfig
+make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- menuconfig
+```
 ##### legacy hotplug (Busybox mdev)
 ```
 Device Drivers  --->
@@ -93,7 +97,7 @@ sed -ie "s/=m/=y/g" .config
 
 #### Make and install
 ```
-make
+make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- -j$(nproc)
 cp arch/arm/boot/{zImage,dts/omap3-beagle-xm.dtb} ${CLFS_TARGET_FS}/boot/
 ```
 
