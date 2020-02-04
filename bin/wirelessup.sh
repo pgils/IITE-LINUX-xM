@@ -2,7 +2,7 @@
 
 WLAN_INTERFACE="${1}"
 WPA_SUPPLICANT_CONFIG="/etc/wpa_supplicant.conf"
-UDHCPC_SCRIPT="/etc/udhcpc/simple.script"
+UDHCPC_SCRIPT="/etc/udhcpc/simple.sh"
 
 ifconfig "${WLAN_INTERFACE}" up
 wpa_supplicant -B -i "${WLAN_INTERFACE}" \
