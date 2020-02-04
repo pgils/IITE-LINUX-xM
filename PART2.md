@@ -145,11 +145,14 @@ Edit `.config`
 - Add
   ```
   DESTDIR  = ${CLFS_TARGET_FS}
-  BINDIR   = /sbin                 # defaults to /usr/local/sbin
-  LIBDIR   = /lib
   CFLAGS  += -I$(DESTDIR)/usr/include/libnl3
   LDFLAGS += -L$(DESTDIR)/usr/lib
   ```
+```
+make
+make BINDIR=/sbin LIBDIR=/lib install
+```
+*defaults for `bin` and `lib` are in `/usr/local/`*
 
 ### wireless-tools
 [clfs.org][13]
