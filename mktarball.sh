@@ -26,6 +26,7 @@ cp -arv "${targetfs}"/* "${targettmp}"
 # http://clfs.org/view/clfs-embedded/arm/cleanup/chowning.html
 chown -Rv root:root "${targettmp}"
 chgrp -v 13 "${targettmp}/var/log/lastlog"
+chown -Rv 33:33 "${targettmp}/www"
 
 cd "${targettmp}" || exit 1
 tar -cJvf "${tarball}" ./*

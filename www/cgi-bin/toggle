@@ -1,0 +1,51 @@
+#!/bin/sh
+#
+# https://openwrt.org/docs/guide-user/services/webserver/http.httpd
+#
+
+ledSysfsPath="/sys/class/leds/beagleboard::usr1/trigger"
+
+printHTML() {
+	echo "Content-type: text/html"
+	echo ""
+	case "${ledTrigger}" in
+			"default-on")
+					echo "LED is <b>ON</b>"
+					;;
+			"none")
+					echo "LED is <b>OFF</b>"
+					;;
+			*)
+					echo "LED state is <b>Unknown</b>"
+					;;
+	esac
+
+	echo "<form method=\"get\">"
+	echo "<input type=\"hidden\" name=\"toggle\" value=\"true\">"
+	echo "<input type=\"submit\" value=\"Toggle\">"
+	echo "</form>"
+}
+
+
+# Get current LED trigger/state
+ledTrigger=$(awk -F"[][]" '{print $2}' ${ledSysfsPath})
+
+# Split variables from query string
+eval $(echo "$QUERY_STRING"|awk -F'&' '{for(i=1;i<=NF;i++){print $i}}')
+
+# If toggle not defined (first page load)
+if [ -z "${toggle}" ]; then
+	printHTML
+	exit 0
+fi
+
+# Default to _ON_, even if initial state is *unknown*
+ledNewTrigger="default-on"
+[ "${ledTrigger}" == "default-on" ] && ledNewTrigger="none"
+
+echo "${ledNewTrigger}" > "${ledSysfsPath}"
+
+# Get trigger state again
+ledTrigger=$(awk -F"[][]" '{print $2}' ${ledSysfsPath})
+
+printHTML
