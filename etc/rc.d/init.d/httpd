@@ -5,15 +5,15 @@
 
 . /etc/rc.d/init.d/functions
 
-LED_SYSFS_PATH="/sys/class/leds/beagleboard\:\:usr1"
+LED_SYSFS_PATH="/sys/class/leds/beagleboard::usr1"
 
 case "$1" in
 start)
     echo -n "Setting LED permissions: "
-    chmod a+w "${LED_SYSFS_PATH}/*"
+    chmod a+w "${LED_SYSFS_PATH}/trigger"
     check_status
     echo -n "Setting LED initial state: "
-    echo "default-on" > "${LED_SYSFS_PATH}"
+    echo "default-on" > "${LED_SYSFS_PATH}/trigger"
     check_status
     echo -n "Starting httpd: "
     /usr/sbin/httpd -u www:www -p 80 -h /www -p 0.0.0.0:80
