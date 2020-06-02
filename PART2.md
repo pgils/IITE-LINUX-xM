@@ -50,6 +50,7 @@ make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- menuconfig
 Device Drivers  --->
     Generic Driver Options  --->
         [*] Support for uevent helper
+        (/sbin/mdev) path to uevent helper
 ```
 ##### Wireguard
 ```
